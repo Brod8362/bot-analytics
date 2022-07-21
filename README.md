@@ -17,6 +17,10 @@ Concept:
 - Send an update of the bot's current guild count.
 - EX: `/v1/guild/knuckles/650`
 
+**POST** `/v1/log/<bot>`
+- FORM DATA: `message` -> string, `level` -> string
+- Levels are `log`, `warn`, `error`
+
 ## Setup
 ```bash
 docker build -t botms:latest .

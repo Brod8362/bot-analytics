@@ -1,5 +1,5 @@
 #!/bin/python3
-from flask import Flask
+from flask import Flask, request
 from influxdb import InfluxDBClient
 import sys
 import time
@@ -30,4 +30,15 @@ def upload_data(bot, guild, channel):
 @app.post("/v1/guild/<bot>/<count>")
 def update_guild_count(bot, count):
     data = f"guild_count,bot={bot} value={count}"
+    return generic_write(data)
+
+@app.post("/v1/log/<bot>")
+def upload_log(bot):
+    required = ["message", "level"]
+    for x in required:
+        if x not in request.form:
+            return f"missing {x}", 400
+    content = request.form["message"]
+    level = request.form["level"]
+    data = f"log,bot={bot},level={level} value=\"{content}\""
     return generic_write(data)
