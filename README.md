@@ -16,3 +16,9 @@ Concept:
 **POST** `/v1/guild/<bot>/<count>`
 - Send an update of the bot's current guild count.
 - EX: `/v1/guild/knuckles/650`
+
+## Setup
+```bash
+docker build -t botms:latest .
+docker run -d --restart unless-stopped botms:latest
+```
