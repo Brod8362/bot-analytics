@@ -42,3 +42,10 @@ def upload_log(bot):
     level = request.form["level"]
     data = f"log,bot={bot},level={level} value=\"{content}\""
     return generic_write(data)
+
+@app.post("/v1/guild_name/<guild>")
+def update_guild_name(guild):
+    if "name" not in request.form:
+        return f"missing name", 400
+    data = f"guild_names,guild={guild} value=\"{request.form['name']}\""
+    return generic_write(data)

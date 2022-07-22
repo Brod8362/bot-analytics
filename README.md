@@ -21,6 +21,11 @@ Concept:
 - FORM DATA: `message` -> string, `level` -> string
 - Levels are `log`, `warn`, `error`
 
+**POST** `/v1/guild_name/<guild>`
+- Update a guild's name
+- FORM DATA: `name` -> string
+- name should be the guild name
+
 ## Setup
 ```bash
 docker build -t botms:latest .
